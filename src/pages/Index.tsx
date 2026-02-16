@@ -125,7 +125,7 @@ const Index = () => {
             </div>
             <div className="text-center">
               <Icon name="Gift" size={20} className="text-amber-400 mx-auto mb-2" />
-              <p className="text-white text-xs font-medium mb-1">Доп. подарки</p>
+              <p className="text-white text-xs font-medium mb-1">Очень много подарков</p>
               <p className="text-white/50 text-[11px] leading-snug">Отдельный розыгрыш среди присутствующих</p>
             </div>
             <div className="text-center">
@@ -138,15 +138,7 @@ const Index = () => {
           <div className="text-center">
             <p className="text-white/40 text-[10px] leading-relaxed">
               Генеральный спонсор и агент акции (розыгрыша): ООО «ТРАНСАЭРО СЕРВИС» (ИНН: 6685158438, ОГРН: 1196658004707), оригинатор ООО «ПРИМЭЙР-СЕРВИС» (ИНН: 6658214500, ОГРН: 1056602819426) — все юридические лица входят в группу компаний AlAero Group
-              <br />
-              <a
-                href="https://alaero.group/law-206"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-white/60 transition-colors"
-              >
-                Информация об акции
-              </a>
+
             </p>
           </div>
         </div>
