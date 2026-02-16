@@ -181,20 +181,7 @@ const Invitation = () => {
             </p>
           </div>
 
-          <div className="text-center space-y-2">
-            <p className="text-white/40 text-[10px] leading-relaxed">
-              Организаторы: Группа компаний AlAero Group (ООО
-              "Примэйр-Сервис", ООО "Трансаэро Сервис")
-            </p>
-            <a
-              href="https://alaero.group/law"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/40 hover:text-white/60 text-[10px] underline transition-colors"
-            >
-              Информация о проводимой акции
-            </a>
-          </div>
+
         </div>
       </section>
     </div>
