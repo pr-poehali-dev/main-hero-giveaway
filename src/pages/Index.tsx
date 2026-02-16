@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
 declare global {
@@ -133,6 +134,16 @@ const Index = () => {
               <p className="text-white text-xs font-medium mb-1">Атмосфера</p>
               <p className="text-white/50 text-[11px] leading-snug">Фуршет, фотозона и фотограф</p>
             </div>
+          </div>
+
+          <div className="text-center mb-8">
+            <Link
+              to="/invitation"
+              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
+            >
+              <Icon name="Mail" size={16} />
+              Электронная версия приглашения
+            </Link>
           </div>
 
           <div className="text-center">
