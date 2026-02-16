@@ -55,9 +55,9 @@ const Index = () => {
         <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-16 animate-fade-in">
           <div className="text-center mb-14">
             <img
-              src="https://cdn.poehali.dev/projects/b44ed0ec-4d50-444b-a8c2-66fbbb4186a6/bucket/4a135322-ec98-4cad-a1ab-e4d7adb6af3c.png"
-              alt="AlAero Group"
-              className="h-28 md:h-36 mx-auto mb-8 rounded-xl bg-white/90 p-3 object-contain"
+              src="https://cdn.poehali.dev/projects/b44ed0ec-4d50-444b-a8c2-66fbbb4186a6/bucket/8a7a5a86-a554-467f-9041-e82e47aabb91.png"
+              alt="AlAero Group — 20 лет на высоте"
+              className="h-32 md:h-44 mx-auto mb-8 object-contain"
             />
             <p className="text-white/60 text-xs tracking-[0.3em] uppercase mb-4 font-medium">
               AlAero Group приглашает
