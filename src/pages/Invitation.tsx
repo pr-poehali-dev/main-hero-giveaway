@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 const Invitation = () => {
   return (
     <div className="min-h-screen bg-background font-body">
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-start justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
