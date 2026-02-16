@@ -1,4 +1,11 @@
+import { useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
+
+declare global {
+  interface Window {
+    SMSAERO_WIDGET: { init: (id: string) => void };
+  }
+}
 
 const prizes = [
   { icon: "🏆", name: "Apple iPhone" },
@@ -8,6 +15,29 @@ const prizes = [
   { icon: "🔊", name: "Умная колонка" },
   { icon: "🎁", name: "Другие призы" },
 ];
+
+const SmsAeroWidget = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://smsaero.ru/service/widget/js/JWcvOnuzuXmlbQaVNZH1und6EMccI8nR";
+    script.type = "text/javascript";
+    script.onload = () => {
+      if (window.SMSAERO_WIDGET && containerRef.current) {
+        window.SMSAERO_WIDGET.init("smsaero_widget");
+      }
+    };
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  return <div id="smsaero_widget" ref={containerRef} />;
+};
 
 const Index = () => {
   return (
@@ -78,6 +108,13 @@ const Index = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8 mb-10">
+            <p className="text-white text-sm font-medium text-center mb-4">
+              Подтвердите участие
+            </p>
+            <SmsAeroWidget />
           </div>
 
           <div className="grid grid-cols-3 gap-4 mb-14">
