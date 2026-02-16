@@ -104,7 +104,7 @@ const Index = () => {
                 <Icon name="AlertCircle" size={18} className="text-amber-400 shrink-0" />
                 <div>
                   <p className="text-white/50 text-xs">Подтвердите участие</p>
-                  <p className="text-white text-sm">до 20 февраля 2026</p>
+                  <p className="text-white text-sm">до 19 февраля 2026 — 12:00</p>
                 </div>
               </div>
             </div>
