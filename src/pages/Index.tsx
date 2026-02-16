@@ -57,7 +57,7 @@ const Index = () => {
             <img
               src="https://cdn.poehali.dev/projects/b44ed0ec-4d50-444b-a8c2-66fbbb4186a6/bucket/8a7a5a86-a554-467f-9041-e82e47aabb91.png"
               alt="AlAero Group — 20 лет на высоте"
-              className="h-32 md:h-44 mx-auto mb-8 object-contain mix-blend-screen"
+              className="h-32 md:h-44 mx-auto mb-8 object-contain mix-blend-screen contrast-150 brightness-150"
             />
             <p className="text-white/60 text-xs tracking-[0.3em] uppercase mb-4 font-medium">
               AlAero Group приглашает
