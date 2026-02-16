@@ -83,7 +83,7 @@ const Index = () => {
                 <Icon name="MapPin" size={18} className="text-amber-400 shrink-0" />
                 <div>
                   <p className="text-white/50 text-xs">Место</p>
-                  <p className="text-white text-sm">Отель «Азимут», г. Екатеринбург, Бахчиванджи 55а, зал «Янтарь», 2 этаж</p>
+                  <p className="text-white text-sm">Отель «Азимут», г. Екатеринбург, ул. Бахчиванджи 55а, зал «Янтарь», 2 этаж</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
