@@ -21,6 +21,15 @@ const Invitation = () => {
             <h1 className="font-heading text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
               Пришло время стать главным героем розыгрыша AlAero Group!
             </h1>
+            <a
+              href="https://alaero.group"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-black font-medium text-sm px-6 py-3 rounded-xl transition-colors"
+            >
+              Подтвердить присутствие
+              <Icon name="ExternalLink" size={16} />
+            </a>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8 mb-8">
@@ -159,17 +168,7 @@ const Invitation = () => {
               </div>
             </div>
 
-            <div className="text-center">
-              <a
-                href="https://alaero.group"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-black font-medium text-sm px-6 py-3 rounded-xl transition-colors"
-              >
-                Подтвердить присутствие
-                <Icon name="ExternalLink" size={16} />
-              </a>
-            </div>
+
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 text-center mb-8">
