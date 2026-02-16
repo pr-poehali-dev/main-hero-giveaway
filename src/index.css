@@ -102,6 +102,20 @@
 
 #smsaero_widget {
   font-family: "Montserrat", sans-serif !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+#smsaero_widget > *,
+#smsaero_widget form,
+#smsaero_widget div {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
 }
 
 #smsaero_widget input {
