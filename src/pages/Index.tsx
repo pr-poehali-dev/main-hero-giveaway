@@ -110,7 +110,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8 mb-10">
+          <div className="mb-10">
             <p className="text-white text-sm font-medium text-center mb-4">
               Подтвердите участие
             </p>
