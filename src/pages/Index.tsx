@@ -61,9 +61,16 @@ const Index = () => {
             <h1 className="font-heading text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
               Розыгрыш призов
             </h1>
-            <p className="text-white/70 text-base font-light max-w-md mx-auto">
+            <p className="text-white/70 text-base font-light max-w-md mx-auto mb-5">
               Каждый участник сможет лично наблюдать за розыгрышем
             </p>
+            <Link
+              to="/invitation"
+              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
+            >
+              <Icon name="Mail" size={16} />
+              Электронная версия приглашения
+            </Link>
           </div>
 
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-14">
@@ -134,16 +141,6 @@ const Index = () => {
               <p className="text-white text-xs font-medium mb-1">Атмосфера</p>
               <p className="text-white/50 text-[11px] leading-snug">Фуршет, фотозона и фотограф</p>
             </div>
-          </div>
-
-          <div className="text-center mb-8">
-            <Link
-              to="/invitation"
-              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
-            >
-              <Icon name="Mail" size={16} />
-              Электронная версия приглашения
-            </Link>
           </div>
 
           <div className="text-center">
