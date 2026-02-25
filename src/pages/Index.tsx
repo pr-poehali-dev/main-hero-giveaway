@@ -108,13 +108,7 @@ const Index = () => {
                   <p className="text-white text-sm">15:00 — 17:00</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <Icon name="AlertCircle" size={18} className="text-amber-400 shrink-0" />
-                <div>
-                  <p className="text-white/50 text-xs">Подтвердите участие</p>
-                  <p className="text-white text-sm">до 19 февраля 2026 — 12:00</p>
-                </div>
-              </div>
+
             </div>
           </div>
 
