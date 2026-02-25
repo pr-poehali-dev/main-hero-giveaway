@@ -148,14 +148,7 @@ const Index = () => {
 
         <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-16 animate-fade-in">
 
-          {/* Логотип */}
-          <div className="flex justify-center mb-8">
-            <img
-              src="https://cdn.poehali.dev/files/59fe9fcd-e584-4989-b5e1-3f470f0d872b.png"
-              alt="AlAero Group"
-              className="h-20 md:h-24 w-auto object-contain mix-blend-lighten opacity-90"
-            />
-          </div>
+
 
           <div className="text-center mb-14">
             <p className="text-white/60 text-xs tracking-[0.3em] uppercase mb-4 font-medium">
