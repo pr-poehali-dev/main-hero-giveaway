@@ -85,30 +85,44 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8 mb-10">
-            <div className="grid md:grid-cols-2 gap-5">
-              <div className="flex items-center gap-3">
-                <Icon name="MapPin" size={18} className="text-amber-400 shrink-0" />
+          <div className="rounded-2xl border border-amber-400/30 overflow-hidden mb-10">
+            <div className="bg-amber-400/10 backdrop-blur-sm px-5 py-3 border-b border-amber-400/20">
+              <p className="text-amber-400 text-xs tracking-[0.25em] uppercase font-semibold text-center">
+                🎉 Завтра розыгрыш — не пропусти!
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm">
+              <div className="flex items-center gap-4 p-5 border-b border-white/10">
+                <div className="w-10 h-10 rounded-xl bg-amber-400/15 flex items-center justify-center shrink-0">
+                  <Icon name="MapPin" size={18} className="text-amber-400" />
+                </div>
                 <div>
-                  <p className="text-white/50 text-xs">Место</p>
-                  <p className="text-white text-sm">Отель «Азимут», г. Екатеринбург, ул. Бахчиванджи 55а, зал «Янтарь», 2 этаж</p>
+                  <p className="text-white/50 text-xs mb-0.5">Место</p>
+                  <p className="text-white text-sm leading-snug">Отель «Азимут», г. Екатеринбург, ул. Бахчиванджи 55а,<br className="hidden md:block" /> зал «Янтарь», 2 этаж</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <Icon name="Calendar" size={18} className="text-amber-400 shrink-0" />
-                <div>
-                  <p className="text-white/50 text-xs">Дата</p>
-                  <p className="text-white text-sm">26 февраля 2026, четверг</p>
+              <div className="grid grid-cols-2">
+                <div className="flex items-center gap-4 p-5 border-r border-white/10">
+                  <div className="w-10 h-10 rounded-xl bg-amber-400/15 flex items-center justify-center shrink-0">
+                    <Icon name="Calendar" size={18} className="text-amber-400" />
+                  </div>
+                  <div>
+                    <p className="text-white/50 text-xs mb-0.5">Дата</p>
+                    <p className="text-white text-sm font-semibold">26 февраля 2026</p>
+                    <p className="text-amber-400 text-xs">четверг</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-5">
+                  <div className="w-10 h-10 rounded-xl bg-amber-400/15 flex items-center justify-center shrink-0">
+                    <Icon name="Clock" size={18} className="text-amber-400" />
+                  </div>
+                  <div>
+                    <p className="text-white/50 text-xs mb-0.5">Время</p>
+                    <p className="text-white text-sm font-semibold">15:00 — 17:00</p>
+                    <p className="text-white/40 text-xs">вход свободный</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <Icon name="Clock" size={18} className="text-amber-400 shrink-0" />
-                <div>
-                  <p className="text-white/50 text-xs">Время</p>
-                  <p className="text-white text-sm">15:00 — 17:00</p>
-                </div>
-              </div>
-
             </div>
           </div>
 
