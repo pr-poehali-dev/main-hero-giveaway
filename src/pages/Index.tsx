@@ -17,6 +17,97 @@ const prizes = [
   { icon: "🎁", name: "Другие призы" },
 ];
 
+const CONFETTI_COLORS = [
+  "#FFD700", "#FF6B6B", "#4ECDC4", "#A8E6CF",
+  "#FFB347", "#C9B1FF", "#FF8ED4", "#87CEEB",
+];
+
+const Confetti = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const pieces: {
+      x: number; y: number; w: number; h: number;
+      color: string; rotation: number; speed: number;
+      drift: number; rotSpeed: number; type: "rect" | "circle" | "ribbon";
+    }[] = [];
+
+    for (let i = 0; i < 120; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        w: Math.random() * 8 + 4,
+        h: Math.random() * 14 + 6,
+        color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+        rotation: Math.random() * Math.PI * 2,
+        speed: Math.random() * 1.5 + 0.8,
+        drift: (Math.random() - 0.5) * 1.2,
+        rotSpeed: (Math.random() - 0.5) * 0.08,
+        type: (["rect", "circle", "ribbon"] as const)[Math.floor(Math.random() * 3)],
+      });
+    }
+
+    let animId: number;
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach((p) => {
+        ctx.save();
+        ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+        ctx.rotate(p.rotation);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.85;
+        if (p.type === "circle") {
+          ctx.beginPath();
+          ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (p.type === "ribbon") {
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w * 0.4, p.h);
+        } else {
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        }
+        ctx.restore();
+        p.y += p.speed;
+        p.x += p.drift;
+        p.rotation += p.rotSpeed;
+        if (p.y > canvas.height) {
+          p.y = -p.h;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      animId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const onResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 pointer-events-none z-20"
+      style={{ opacity: 0.6 }}
+    />
+  );
+};
+
 const SmsAeroWidget = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -51,9 +142,23 @@ const Index = () => {
               "url(https://cdn.poehali.dev/projects/b44ed0ec-4d50-444b-a8c2-66fbbb4186a6/files/4786aa80-236c-4359-b04a-d9991548bf98.jpg)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/85" />
+
+        <Confetti />
 
         <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-16 animate-fade-in">
+
+          {/* Логотип */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-2xl shadow-black/40">
+              <img
+                src="https://cdn.poehali.dev/files/1f73df86-413b-4166-ac9f-7dd0cd5a7685.jpg"
+                alt="AlAero Group"
+                className="h-20 md:h-24 w-auto object-contain"
+              />
+            </div>
+          </div>
+
           <div className="text-center mb-14">
             <p className="text-white/60 text-xs tracking-[0.3em] uppercase mb-4 font-medium">
               AlAero Group приглашает
@@ -154,7 +259,6 @@ const Index = () => {
           <div className="text-center">
             <p className="text-white/40 text-[10px] leading-relaxed">
               Генеральный спонсор и агент акции (розыгрыша): ООО «ТРАНСАЭРО СЕРВИС» (ИНН: 6685158438, ОГРН: 1196658004707), организатор ООО «ПРИМЭЙР-СЕРВИС» (ИНН: 6658214500, ОГРН: 1056602819426) — все юридические лица входят в группу компаний AlAero Group
-
             </p>
           </div>
         </div>
