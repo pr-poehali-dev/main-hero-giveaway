@@ -151,7 +151,7 @@ const Index = () => {
           {/* Логотип */}
           <div className="flex justify-center mb-8">
             <img
-              src="https://cdn.poehali.dev/files/1f73df86-413b-4166-ac9f-7dd0cd5a7685.jpg"
+              src="https://cdn.poehali.dev/files/59fe9fcd-e584-4989-b5e1-3f470f0d872b.png"
               alt="AlAero Group"
               className="h-20 md:h-24 w-auto object-contain mix-blend-lighten opacity-90"
             />
