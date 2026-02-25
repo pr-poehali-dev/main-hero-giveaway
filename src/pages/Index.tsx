@@ -37,7 +37,7 @@ const Confetti = () => {
     const pieces: {
       x: number; y: number; w: number; h: number;
       color: string; rotation: number; speed: number;
-      drift: number; rotSpeed: number; type: "rect" | "circle" | "ribbon";
+      drift: number; rotSpeed: number; type: "rect" | "circle" | "ribbon" | "plane";
     }[] = [];
 
     for (let i = 0; i < 120; i++) {
@@ -51,7 +51,7 @@ const Confetti = () => {
         speed: Math.random() * 1.5 + 0.8,
         drift: (Math.random() - 0.5) * 1.2,
         rotSpeed: (Math.random() - 0.5) * 0.08,
-        type: (["rect", "circle", "ribbon"] as const)[Math.floor(Math.random() * 3)],
+        type: (["rect", "circle", "ribbon", "plane"] as const)[Math.floor(Math.random() * 4)],
       });
     }
 
@@ -70,6 +70,29 @@ const Confetti = () => {
           ctx.fill();
         } else if (p.type === "ribbon") {
           ctx.fillRect(-p.w / 2, -p.h / 2, p.w * 0.4, p.h);
+        } else if (p.type === "plane") {
+          const s = p.w * 1.2;
+          ctx.fillStyle = "#FFD700";
+          ctx.globalAlpha = 0.9;
+          ctx.beginPath();
+          ctx.moveTo(s * 0.6, 0);
+          ctx.lineTo(-s * 0.4, -s * 0.25);
+          ctx.lineTo(-s * 0.2, 0);
+          ctx.lineTo(-s * 0.4, s * 0.25);
+          ctx.closePath();
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(s * 0.05, -s * 0.05);
+          ctx.lineTo(-s * 0.15, -s * 0.35);
+          ctx.lineTo(-s * 0.3, -s * 0.1);
+          ctx.closePath();
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(-s * 0.25, s * 0.05);
+          ctx.lineTo(-s * 0.4, s * 0.22);
+          ctx.lineTo(-s * 0.5, s * 0.08);
+          ctx.closePath();
+          ctx.fill();
         } else {
           ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
         }
@@ -158,7 +181,7 @@ const Index = () => {
 
           <h1 className="font-heading text-5xl md:text-7xl font-black text-white leading-[1.05] mb-6 tracking-tight">
             Розыгрыш<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">призов</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">призов 26 февраля!</span>
           </h1>
 
           <p className="text-white/60 text-lg font-light max-w-sm mx-auto mb-10">
