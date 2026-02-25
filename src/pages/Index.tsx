@@ -150,13 +150,11 @@ const Index = () => {
 
           {/* Логотип */}
           <div className="flex justify-center mb-8">
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-2xl shadow-black/40">
-              <img
-                src="https://cdn.poehali.dev/files/1f73df86-413b-4166-ac9f-7dd0cd5a7685.jpg"
-                alt="AlAero Group"
-                className="h-20 md:h-24 w-auto object-contain"
-              />
-            </div>
+            <img
+              src="https://cdn.poehali.dev/files/1f73df86-413b-4166-ac9f-7dd0cd5a7685.jpg"
+              alt="AlAero Group"
+              className="h-20 md:h-24 w-auto object-contain mix-blend-lighten opacity-90"
+            />
           </div>
 
           <div className="text-center mb-14">
