@@ -88,7 +88,7 @@ const Index = () => {
           <div className="rounded-2xl border border-amber-400/30 overflow-hidden mb-10">
             <div className="bg-amber-400/10 backdrop-blur-sm px-5 py-3 border-b border-amber-400/20">
               <p className="text-amber-400 text-xs tracking-[0.25em] uppercase font-semibold text-center">
-                🎉 Завтра розыгрыш — не пропусти!
+                🎉 Не пропусти розыгрыш!
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm">
@@ -119,7 +119,7 @@ const Index = () => {
                   <div>
                     <p className="text-white/50 text-xs mb-0.5">Время</p>
                     <p className="text-white text-sm font-semibold">15:00 — 17:00</p>
-                    <p className="text-white/40 text-xs">вход свободный</p>
+                    <p className="text-white/40 text-xs">вход по регистрации</p>
                   </div>
                 </div>
               </div>
