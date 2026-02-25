@@ -155,17 +155,7 @@ const Invitation = () => {
                   <p className="text-white text-sm">26 февраля 2026</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <Icon
-                  name="AlertCircle"
-                  size={18}
-                  className="text-amber-400 shrink-0"
-                />
-                <div>
-                  <p className="text-white/50 text-xs">Подтвердите присутствие</p>
-                  <p className="text-white text-sm">до 19.02.2026</p>
-                </div>
-              </div>
+
             </div>
 
 
