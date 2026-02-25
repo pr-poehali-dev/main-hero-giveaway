@@ -133,127 +133,159 @@ const SmsAeroWidget = () => {
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background font-body">
+    <div className="min-h-screen font-body" style={{ background: "#0a0a0f" }}>
+      {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center scale-105"
           style={{
             backgroundImage:
               "url(https://cdn.poehali.dev/projects/b44ed0ec-4d50-444b-a8c2-66fbbb4186a6/files/4786aa80-236c-4359-b04a-d9991548bf98.jpg)",
+            filter: "brightness(0.4) saturate(0.7)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#0a0a0f]" />
 
         <Confetti />
 
-        <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-16 animate-fade-in">
-
-
-
-          <div className="text-center mb-14">
-            <p className="text-white/60 text-xs tracking-[0.3em] uppercase mb-4 font-medium">
-              AlAero Group приглашает
+        <div className="relative z-10 w-full max-w-3xl mx-auto px-6 pt-20 pb-10 animate-fade-in text-center">
+          <div className="inline-flex items-center gap-2 bg-amber-400/15 border border-amber-400/30 rounded-full px-4 py-1.5 mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <p className="text-amber-400 text-xs tracking-[0.2em] uppercase font-semibold">
+              AlAero Group · 20 лет на высоте
             </p>
-            <h1 className="font-heading text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
-              Розыгрыш призов
-            </h1>
-            <p className="text-white/70 text-base font-light max-w-md mx-auto mb-5">
-              Каждый участник сможет лично наблюдать за розыгрышем
-            </p>
-            <Link
-              to="/invitation"
-              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
+          </div>
+
+          <h1 className="font-heading text-5xl md:text-7xl font-black text-white leading-[1.05] mb-6 tracking-tight">
+            Розыгрыш<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">призов</span>
+          </h1>
+
+          <p className="text-white/60 text-lg font-light max-w-sm mx-auto mb-10">
+            Каждый участник сможет лично наблюдать за розыгрышем
+          </p>
+
+          <Link
+            to="/invitation"
+            className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors border border-amber-400/30 hover:border-amber-400/60 px-5 py-2.5 rounded-full"
+          >
+            <Icon name="Mail" size={15} />
+            Электронная версия приглашения
+          </Link>
+        </div>
+      </section>
+
+      {/* Main content */}
+      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 pb-20 -mt-4">
+
+        {/* Prizes */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-10">
+          {prizes.map((p) => (
+            <div
+              key={p.name}
+              className="rounded-2xl py-5 px-2 text-center border border-white/8 hover:border-amber-400/30 transition-colors"
+              style={{ background: "rgba(255,255,255,0.05)" }}
             >
-              <Icon name="Mail" size={16} />
-              Электронная версия приглашения
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-14">
-            {prizes.map((p) => (
-              <div
-                key={p.name}
-                className="bg-white/10 backdrop-blur-sm rounded-xl py-4 px-2 text-center border border-white/10"
-              >
-                <span className="text-2xl block mb-1.5">{p.icon}</span>
-                <p className="text-white/90 text-[11px] leading-tight font-medium">{p.name}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="rounded-2xl border border-amber-400/30 overflow-hidden mb-10">
-            <div className="bg-amber-400/10 backdrop-blur-sm px-5 py-3 border-b border-amber-400/20">
-              <p className="text-amber-400 text-xs tracking-[0.25em] uppercase font-semibold text-center">
-                🎉 Не пропусти розыгрыш!
-              </p>
+              <span className="text-2xl block mb-2">{p.icon}</span>
+              <p className="text-white/80 text-[11px] leading-tight font-medium">{p.name}</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm">
-              <div className="flex items-center gap-4 p-5 border-b border-white/10">
-                <div className="w-10 h-10 rounded-xl bg-amber-400/15 flex items-center justify-center shrink-0">
-                  <Icon name="MapPin" size={18} className="text-amber-400" />
-                </div>
-                <div>
-                  <p className="text-white/50 text-xs mb-0.5">Место</p>
-                  <p className="text-white text-sm leading-snug">Отель «Азимут», г. Екатеринбург, ул. Бахчиванджи 55а,<br className="hidden md:block" /> зал «Янтарь», 2 этаж</p>
-                </div>
+          ))}
+        </div>
+
+        {/* Event details */}
+        <div className="rounded-3xl overflow-hidden border border-amber-400/20 mb-8" style={{ background: "rgba(255,255,255,0.04)" }}>
+          <div className="px-6 py-4 border-b border-amber-400/20 flex items-center justify-center gap-2" style={{ background: "rgba(251,191,36,0.08)" }}>
+            <span className="text-lg">🎉</span>
+            <p className="text-amber-400 text-xs tracking-[0.2em] uppercase font-bold">Не пропусти розыгрыш!</p>
+          </div>
+
+          <div className="flex items-start gap-4 p-5 border-b border-white/8">
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(251,191,36,0.12)" }}>
+              <Icon name="MapPin" size={16} className="text-amber-400" />
+            </div>
+            <div>
+              <p className="text-white/40 text-xs mb-1">Место</p>
+              <p className="text-white text-sm leading-snug">Отель «Азимут», г. Екатеринбург,<br />ул. Бахчиванджи 55а, зал «Янтарь», 2 этаж</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2">
+            <div className="flex items-start gap-4 p-5 border-r border-white/8">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(251,191,36,0.12)" }}>
+                <Icon name="Calendar" size={16} className="text-amber-400" />
               </div>
-              <div className="grid grid-cols-2">
-                <div className="flex items-center gap-4 p-5 border-r border-white/10">
-                  <div className="w-10 h-10 rounded-xl bg-amber-400/15 flex items-center justify-center shrink-0">
-                    <Icon name="Calendar" size={18} className="text-amber-400" />
-                  </div>
-                  <div>
-                    <p className="text-white/50 text-xs mb-0.5">Дата</p>
-                    <p className="text-white text-sm font-semibold">26 февраля 2026</p>
-                    <p className="text-amber-400 text-xs">четверг</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-5">
-                  <div className="w-10 h-10 rounded-xl bg-amber-400/15 flex items-center justify-center shrink-0">
-                    <Icon name="Clock" size={18} className="text-amber-400" />
-                  </div>
-                  <div>
-                    <p className="text-white/50 text-xs mb-0.5">Время</p>
-                    <p className="text-white text-sm font-semibold">15:00 — 17:00</p>
-                    <p className="text-white/40 text-xs">вход по регистрации</p>
-                  </div>
-                </div>
+              <div>
+                <p className="text-white/40 text-xs mb-1">Дата</p>
+                <p className="text-white text-sm font-semibold">26 февраля 2026</p>
+                <p className="text-amber-400 text-xs mt-0.5">четверг</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 p-5">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(251,191,36,0.12)" }}>
+                <Icon name="Clock" size={16} className="text-amber-400" />
+              </div>
+              <div>
+                <p className="text-white/40 text-xs mb-1">Время</p>
+                <p className="text-white text-sm font-semibold">15:00 — 17:00</p>
+                <p className="text-white/30 text-xs mt-0.5">вход по регистрации</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="mb-10">
-            <p className="text-white text-sm font-medium text-center mb-4">
-              Подтвердите участие
-            </p>
-            <SmsAeroWidget />
+        {/* Registration */}
+        <div className="mb-8">
+          <p className="text-white/70 text-sm font-medium text-center mb-4">
+            Подтвердите участие
+          </p>
+          <SmsAeroWidget />
+        </div>
+
+        {/* Features */}
+        <div className="grid grid-cols-3 gap-4 mb-10">
+          <div className="rounded-2xl p-4 text-center border border-white/8" style={{ background: "rgba(255,255,255,0.04)" }}>
+            <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: "rgba(251,191,36,0.1)" }}>
+              <Icon name="ShieldCheck" size={18} className="text-amber-400" />
+            </div>
+            <p className="text-white text-xs font-semibold mb-1">Честный розыгрыш</p>
+            <p className="text-white/40 text-[11px] leading-snug">Лототрон определит победителей при вас</p>
           </div>
-
-          <div className="grid grid-cols-3 gap-4 mb-14">
-            <div className="text-center">
-              <Icon name="ShieldCheck" size={20} className="text-amber-400 mx-auto mb-2" />
-              <p className="text-white text-xs font-medium mb-1">Честный розыгрыш</p>
-              <p className="text-white/50 text-[11px] leading-snug">Лототрон определит победителей при вас</p>
+          <div className="rounded-2xl p-4 text-center border border-white/8" style={{ background: "rgba(255,255,255,0.04)" }}>
+            <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: "rgba(251,191,36,0.1)" }}>
+              <Icon name="Gift" size={18} className="text-amber-400" />
             </div>
-            <div className="text-center">
-              <Icon name="Gift" size={20} className="text-amber-400 mx-auto mb-2" />
-              <p className="text-white text-xs font-medium mb-1">Очень много подарков</p>
-              <p className="text-white/50 text-[11px] leading-snug">Отдельный розыгрыш среди присутствующих</p>
-            </div>
-            <div className="text-center">
-              <Icon name="Camera" size={20} className="text-amber-400 mx-auto mb-2" />
-              <p className="text-white text-xs font-medium mb-1">Атмосфера</p>
-              <p className="text-white/50 text-[11px] leading-snug">Фуршет, фотозона и фотограф</p>
-            </div>
+            <p className="text-white text-xs font-semibold mb-1">Много подарков</p>
+            <p className="text-white/40 text-[11px] leading-snug">Отдельный розыгрыш среди присутствующих</p>
           </div>
+          <div className="rounded-2xl p-4 text-center border border-white/8" style={{ background: "rgba(255,255,255,0.04)" }}>
+            <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: "rgba(251,191,36,0.1)" }}>
+              <Icon name="Camera" size={18} className="text-amber-400" />
+            </div>
+            <p className="text-white text-xs font-semibold mb-1">Атмосфера</p>
+            <p className="text-white/40 text-[11px] leading-snug">Фуршет, фотозона и фотограф</p>
+          </div>
+        </div>
 
-          <div className="text-center">
-            <p className="text-white/40 text-[10px] leading-relaxed">
-              Генеральный спонсор и агент акции (розыгрыша): ООО «ТРАНСАЭРО СЕРВИС» (ИНН: 6685158438, ОГРН: 1196658004707), организатор ООО «ПРИМЭЙР-СЕРВИС» (ИНН: 6658214500, ОГРН: 1056602819426) — все юридические лица входят в группу компаний AlAero Group
+        {/* Photo/video after event */}
+        <div className="rounded-3xl p-6 mb-10 border border-white/8 flex items-start gap-5" style={{ background: "rgba(255,255,255,0.04)" }}>
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
+            <Icon name="ImagePlay" size={22} className="text-amber-400" />
+          </div>
+          <div>
+            <p className="text-white font-semibold text-sm mb-1">Фото и видео с мероприятия</p>
+            <p className="text-white/50 text-sm leading-relaxed">
+              После мероприятия все фотографии и видеозаписи с розыгрыша будут опубликованы на этом сайте — следи за обновлениями!
             </p>
           </div>
         </div>
-      </section>
+
+        {/* Legal */}
+        <div className="text-center">
+          <p className="text-white/25 text-[10px] leading-relaxed">
+            Генеральный спонсор и агент акции (розыгрыша): ООО «ТРАНСАЭРО СЕРВИС» (ИНН: 6685158438, ОГРН: 1196658004707), организатор ООО «ПРИМЭЙР-СЕРВИС» (ИНН: 6658214500, ОГРН: 1056602819426) — все юридические лица входят в группу компаний AlAero Group
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
