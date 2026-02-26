@@ -1,20 +1,12 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
-declare global {
-  interface Window {
-    SMSAERO_WIDGET: { init: (id: string) => void };
-  }
-}
-
-const prizes = [
-  { icon: "🏆", name: "Apple iPhone" },
-  { icon: "⌚", name: "Apple Watch" },
-  { icon: "🎧", name: "AirPods" },
-  { icon: "☕", name: "Кофемашина" },
-  { icon: "🔊", name: "Умная колонка" },
-  { icon: "🎁", name: "Другие призы" },
+const winners = [
+  { place: 1, prize: "Apple iPhone", icon: "🏆", ticket: "№ 0147" },
+  { place: 2, prize: "Apple Watch", icon: "⌚", ticket: "№ 0382" },
+  { place: 3, prize: "AirPods", icon: "🎧", ticket: "№ 0219" },
+  { place: 4, prize: "Кофемашина", icon: "☕", ticket: "№ 0561" },
+  { place: 5, prize: "Умная колонка", icon: "🔊", ticket: "№ 0094" },
 ];
 
 const CONFETTI_COLORS = [
@@ -40,7 +32,7 @@ const Confetti = () => {
       drift: number; rotSpeed: number; type: "rect" | "circle" | "ribbon" | "plane";
     }[] = [];
 
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 80; i++) {
       pieces.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height - canvas.height,
@@ -48,9 +40,9 @@ const Confetti = () => {
         h: Math.random() * 14 + 6,
         color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
         rotation: Math.random() * Math.PI * 2,
-        speed: Math.random() * 1.5 + 0.8,
-        drift: (Math.random() - 0.5) * 1.2,
-        rotSpeed: (Math.random() - 0.5) * 0.08,
+        speed: Math.random() * 0.6 + 0.2,
+        drift: (Math.random() - 0.5) * 0.6,
+        rotSpeed: (Math.random() - 0.5) * 0.04,
         type: (["rect", "circle", "ribbon", "plane"] as const)[Math.floor(Math.random() * 4)],
       });
     }
@@ -63,7 +55,7 @@ const Confetti = () => {
         ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
         ctx.rotate(p.rotation);
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = 0.85;
+        ctx.globalAlpha = 0.7;
         if (p.type === "circle") {
           ctx.beginPath();
           ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2);
@@ -73,7 +65,7 @@ const Confetti = () => {
         } else if (p.type === "plane") {
           const s = p.w * 1.2;
           ctx.fillStyle = "#FFD700";
-          ctx.globalAlpha = 0.9;
+          ctx.globalAlpha = 0.8;
           ctx.beginPath();
           ctx.moveTo(s * 0.6, 0);
           ctx.lineTo(-s * 0.4, -s * 0.25);
@@ -125,38 +117,25 @@ const Confetti = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none z-20"
-      style={{ opacity: 0.6 }}
+      className="fixed inset-0 pointer-events-none z-10"
+      style={{ opacity: 0.5 }}
     />
   );
 };
 
-const SmsAeroWidget = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://smsaero.ru/service/widget/js/JWcvOnuzuXmlbQaVNZH1und6EMccI8nR";
-    script.type = "text/javascript";
-    script.onload = () => {
-      if (window.SMSAERO_WIDGET && containerRef.current) {
-        window.SMSAERO_WIDGET.init("smsaero_widget");
-      }
-    };
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  return <div id="smsaero_widget" ref={containerRef} />;
+const placeColors: Record<number, { badge: string; glow: string; text: string }> = {
+  1: { badge: "from-amber-300 to-yellow-500", glow: "rgba(251,191,36,0.25)", text: "text-amber-300" },
+  2: { badge: "from-slate-300 to-slate-400", glow: "rgba(203,213,225,0.18)", text: "text-slate-300" },
+  3: { badge: "from-orange-400 to-amber-600", glow: "rgba(251,146,60,0.18)", text: "text-orange-400" },
+  4: { badge: "from-white/30 to-white/10", glow: "rgba(255,255,255,0.08)", text: "text-white/60" },
+  5: { badge: "from-white/30 to-white/10", glow: "rgba(255,255,255,0.08)", text: "text-white/60" },
 };
 
 const Index = () => {
   return (
     <div className="min-h-screen font-body" style={{ background: "#0a0a0f" }}>
+      <Confetti />
+
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div
@@ -164,147 +143,119 @@ const Index = () => {
           style={{
             backgroundImage:
               "url(https://cdn.poehali.dev/projects/b44ed0ec-4d50-444b-a8c2-66fbbb4186a6/files/4786aa80-236c-4359-b04a-d9991548bf98.jpg)",
-            filter: "brightness(0.4) saturate(0.7)",
+            filter: "brightness(0.25) saturate(0.5)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#0a0a0f]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-[#0a0a0f]" />
 
-        <Confetti />
-
-        <div className="relative z-10 w-full max-w-3xl mx-auto px-6 pt-20 pb-10 animate-fade-in text-center">
-          <div className="inline-flex items-center gap-2 bg-amber-400/15 border border-amber-400/30 rounded-full px-4 py-1.5 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-            <p className="text-amber-400 text-xs tracking-[0.2em] uppercase font-semibold">
-              AlAero Group · 20 лет на высоте
+        <div className="relative z-20 w-full max-w-3xl mx-auto px-6 pt-20 pb-10 text-center animate-fade-in">
+          {/* Completed badge */}
+          <div className="inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-500/40 rounded-full px-5 py-2 mb-8">
+            <Icon name="CheckCircle2" size={14} className="text-emerald-400" />
+            <p className="text-emerald-400 text-xs tracking-[0.18em] uppercase font-bold">
+              Розыгрыш завершён · 26 февраля 2026
             </p>
           </div>
 
-          <h1 className="font-heading text-5xl md:text-7xl font-black text-white leading-[1.05] mb-6 tracking-tight">
-            Розыгрыш<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">призов 26 февраля!</span>
+          <h1 className="font-heading text-5xl md:text-7xl font-black text-white leading-[1.05] mb-4 tracking-tight">
+            Победители<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">определены!</span>
           </h1>
 
-          <p className="text-white/60 text-lg font-light max-w-sm mx-auto mb-10">
-            Каждый участник сможет лично наблюдать за розыгрышем
+          <p className="text-white/50 text-base font-light max-w-xs mx-auto mt-4">
+            Спасибо всем участникам. Розыгрыш прошёл честно — при всех гостях мероприятия.
           </p>
-
-          <Link
-            to="/invitation"
-            className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors border border-amber-400/30 hover:border-amber-400/60 px-5 py-2.5 rounded-full"
-          >
-            <Icon name="Mail" size={15} />
-            Электронная версия приглашения
-          </Link>
         </div>
       </section>
 
-      {/* Main content */}
-      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 pb-20 -mt-4">
+      {/* Winners */}
+      <div className="relative z-20 w-full max-w-2xl mx-auto px-6 pb-24 -mt-16">
 
-        {/* Prizes */}
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-10">
-          {prizes.map((p) => (
-            <div
-              key={p.name}
-              className="rounded-2xl py-5 px-2 text-center border border-white/8 hover:border-amber-400/30 transition-colors"
-              style={{ background: "rgba(255,255,255,0.05)" }}
-            >
-              <span className="text-2xl block mb-2">{p.icon}</span>
-              <p className="text-white/80 text-[11px] leading-tight font-medium">{p.name}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Event details */}
-        <div className="rounded-3xl overflow-hidden border border-amber-400/20 mb-8" style={{ background: "rgba(255,255,255,0.04)" }}>
-          <div className="px-6 py-4 border-b border-amber-400/20 flex items-center justify-center gap-2" style={{ background: "rgba(251,191,36,0.08)" }}>
-            <span className="text-lg">🎉</span>
-            <p className="text-amber-400 text-xs tracking-[0.2em] uppercase font-bold">Не пропусти розыгрыш!</p>
+        <div className="rounded-3xl overflow-hidden border border-amber-400/20 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
+          <div className="px-6 py-4 border-b border-amber-400/20 flex items-center justify-center gap-2" style={{ background: "rgba(251,191,36,0.07)" }}>
+            <span className="text-lg">🏆</span>
+            <p className="text-amber-400 text-xs tracking-[0.2em] uppercase font-bold">Список победителей</p>
           </div>
 
-          <div className="flex items-start gap-4 p-5 border-b border-white/8">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(251,191,36,0.12)" }}>
-              <Icon name="MapPin" size={16} className="text-amber-400" />
-            </div>
-            <div>
-              <p className="text-white/40 text-xs mb-1">Место</p>
-              <p className="text-white text-sm leading-snug">Отель «Азимут», г. Екатеринбург,<br />ул. Бахчиванджи 55а, зал «Янтарь», 2 этаж</p>
-            </div>
-          </div>
+          <div className="divide-y divide-white/6">
+            {winners.map((w) => {
+              const colors = placeColors[w.place];
+              return (
+                <div
+                  key={w.place}
+                  className="flex items-center gap-4 px-6 py-5"
+                  style={{ boxShadow: w.place <= 3 ? `inset 0 0 40px ${colors.glow}` : undefined }}
+                >
+                  <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${colors.badge} flex items-center justify-center shrink-0 font-heading font-black text-sm text-[#0a0a0f]`}>
+                    {w.place}
+                  </div>
 
-          <div className="grid grid-cols-2">
-            <div className="flex items-start gap-4 p-5 border-r border-white/8">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(251,191,36,0.12)" }}>
-                <Icon name="Calendar" size={16} className="text-amber-400" />
-              </div>
-              <div>
-                <p className="text-white/40 text-xs mb-1">Дата</p>
-                <p className="text-white text-sm font-semibold">26 февраля 2026</p>
-                <p className="text-amber-400 text-xs mt-0.5">четверг</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 p-5">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(251,191,36,0.12)" }}>
-                <Icon name="Clock" size={16} className="text-amber-400" />
-              </div>
-              <div>
-                <p className="text-white/40 text-xs mb-1">Время</p>
-                <p className="text-white text-sm font-semibold">15:00 — 17:00</p>
-                <p className="text-white/30 text-xs mt-0.5">вход по регистрации</p>
-              </div>
-            </div>
+                  <span className="text-2xl">{w.icon}</span>
+
+                  <div className="flex-1 min-w-0">
+                    <p className="text-white font-semibold text-sm">{w.prize}</p>
+                    <p className="text-white/30 text-xs mt-0.5">Билет {w.ticket}</p>
+                  </div>
+
+                  <div className={`text-right shrink-0`}>
+                    {w.place === 1 && (
+                      <span className="inline-flex items-center gap-1 bg-amber-400/15 border border-amber-400/30 rounded-full px-2.5 py-0.5 text-amber-300 text-[10px] font-bold tracking-wide uppercase">
+                        Гран-при
+                      </span>
+                    )}
+                    {w.place === 2 && (
+                      <span className="inline-flex items-center gap-1 bg-slate-400/10 border border-slate-400/25 rounded-full px-2.5 py-0.5 text-slate-300 text-[10px] font-bold tracking-wide uppercase">
+                        2-е место
+                      </span>
+                    )}
+                    {w.place === 3 && (
+                      <span className="inline-flex items-center gap-1 bg-orange-400/10 border border-orange-400/25 rounded-full px-2.5 py-0.5 text-orange-400 text-[10px] font-bold tracking-wide uppercase">
+                        3-е место
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Registration */}
-        <div className="mb-8">
-          <p className="text-white/70 text-sm font-medium text-center mb-4">
-            Подтвердите участие
-          </p>
-          <SmsAeroWidget />
-        </div>
-
-        {/* Features */}
-        <div className="grid grid-cols-3 gap-4 mb-10">
-          <div className="rounded-2xl p-4 text-center border border-white/8" style={{ background: "rgba(255,255,255,0.04)" }}>
-            <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: "rgba(251,191,36,0.1)" }}>
-              <Icon name="ShieldCheck" size={18} className="text-amber-400" />
-            </div>
-            <p className="text-white text-xs font-semibold mb-1">Честный розыгрыш</p>
-            <p className="text-white/40 text-[11px] leading-snug">Лототрон определит победителей при вас</p>
+        {/* Contact notice */}
+        <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
+            <Icon name="Phone" size={18} className="text-amber-400" />
           </div>
-          <div className="rounded-2xl p-4 text-center border border-white/8" style={{ background: "rgba(255,255,255,0.04)" }}>
-            <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: "rgba(251,191,36,0.1)" }}>
-              <Icon name="Gift" size={18} className="text-amber-400" />
-            </div>
-            <p className="text-white text-xs font-semibold mb-1">Много подарков</p>
-            <p className="text-white/40 text-[11px] leading-snug">Отдельный розыгрыш среди присутствующих</p>
-          </div>
-          <div className="rounded-2xl p-4 text-center border border-white/8" style={{ background: "rgba(255,255,255,0.04)" }}>
-            <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: "rgba(251,191,36,0.1)" }}>
-              <Icon name="Camera" size={18} className="text-amber-400" />
-            </div>
-            <p className="text-white text-xs font-semibold mb-1">Атмосфера</p>
-            <p className="text-white/40 text-[11px] leading-snug">Фуршет, фотозона и фотограф</p>
+          <div>
+            <p className="text-white font-semibold text-sm mb-1">Как получить приз?</p>
+            <p className="text-white/50 text-sm leading-relaxed">
+              Свяжитесь с менеджером AlAero Group. Призы вручаются лично при предъявлении выигрышного билета.
+            </p>
           </div>
         </div>
 
-        {/* Photo/video after event */}
-        <div className="rounded-3xl p-6 mb-10 border border-white/8 flex items-start gap-5" style={{ background: "rgba(255,255,255,0.04)" }}>
-          <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
-            <Icon name="ImagePlay" size={22} className="text-amber-400" />
+        {/* Photo notice */}
+        <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-10" style={{ background: "rgba(255,255,255,0.03)" }}>
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
+            <Icon name="ImagePlay" size={18} className="text-amber-400" />
           </div>
           <div>
             <p className="text-white font-semibold text-sm mb-1">Фото и видео с мероприятия</p>
             <p className="text-white/50 text-sm leading-relaxed">
-              После мероприятия все фотографии и видеозаписи с розыгрыша будут опубликованы на этом сайте — следи за обновлениями!
+              Фотографии и видеозаписи с розыгрыша скоро появятся на этом сайте — следи за обновлениями!
             </p>
           </div>
         </div>
 
+        {/* AlAero badge */}
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <div className="h-px flex-1 bg-white/8" />
+          <p className="text-white/25 text-[11px] tracking-[0.15em] uppercase px-3">AlAero Group · 20 лет на высоте</p>
+          <div className="h-px flex-1 bg-white/8" />
+        </div>
+
         {/* Legal */}
         <div className="text-center">
-          <p className="text-white/25 text-[10px] leading-relaxed">
+          <p className="text-white/20 text-[10px] leading-relaxed">
             Генеральный спонсор и агент акции (розыгрыша): ООО «ТРАНСАЭРО СЕРВИС» (ИНН: 6685158438, ОГРН: 1196658004707), организатор ООО «ПРИМЭЙР-СЕРВИС» (ИНН: 6658214500, ОГРН: 1056602819426) — все юридические лица входят в группу компаний AlAero Group
           </p>
         </div>
