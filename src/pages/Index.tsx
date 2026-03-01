@@ -168,16 +168,38 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Photo notice */}
-        <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-10" style={{ background: "rgba(255,255,255,0.03)" }}>
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
-            <Icon name="ImagePlay" size={18} className="text-amber-400" />
+        {/* Video */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <Icon name="PlayCircle" size={18} className="text-amber-400" />
+            <p className="text-white font-semibold text-sm">Видео с мероприятия</p>
           </div>
-          <div>
-            <p className="text-white font-semibold text-sm mb-1">Фото и видео с мероприятия</p>
-            <p className="text-white/50 text-sm leading-relaxed">
-              Фотографии и видеозаписи с розыгрыша скоро появятся на этом сайте — следи за обновлениями!
-            </p>
+          <div className="rounded-2xl overflow-hidden border border-white/8" style={{ background: "rgba(255,255,255,0.03)" }}>
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <iframe
+                src="https://disk.yandex.ru/i/Hw5Z6R9Hi-t_tg"
+                className="absolute inset-0 w-full h-full"
+                frameBorder="0"
+                allowFullScreen
+                allow="autoplay; fullscreen"
+                title="Видео с мероприятия AlAero"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Photo Gallery */}
+        <div className="mb-10">
+          <div className="flex items-center gap-2 mb-4">
+            <Icon name="Images" size={18} className="text-amber-400" />
+            <p className="text-white font-semibold text-sm">Фото с мероприятия</p>
+          </div>
+          <div className="rounded-2xl p-6 border border-white/8 text-center" style={{ background: "rgba(255,255,255,0.03)" }}>
+            <div className="w-12 h-12 rounded-2xl mx-auto mb-3 flex items-center justify-center" style={{ background: "rgba(251,191,36,0.1)" }}>
+              <Icon name="ImagePlus" size={22} className="text-amber-400" />
+            </div>
+            <p className="text-white/50 text-sm">Фотографии с розыгрыша скоро появятся здесь</p>
+            <p className="text-white/25 text-xs mt-1">Следи за обновлениями!</p>
           </div>
         </div>
 
