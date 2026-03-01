@@ -1,14 +1,6 @@
 import { useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-const winners = [
-  { place: 1, prize: "Apple iPhone", icon: "🏆", ticket: "№ 0147" },
-  { place: 2, prize: "Apple Watch", icon: "⌚", ticket: "№ 0382" },
-  { place: 3, prize: "AirPods", icon: "🎧", ticket: "№ 0219" },
-  { place: 4, prize: "Кофемашина", icon: "☕", ticket: "№ 0561" },
-  { place: 5, prize: "Умная колонка", icon: "🔊", ticket: "№ 0094" },
-];
-
 const CONFETTI_COLORS = [
   "#FFD700", "#FF6B6B", "#4ECDC4", "#A8E6CF",
   "#FFB347", "#C9B1FF", "#FF8ED4", "#87CEEB",
@@ -123,14 +115,6 @@ const Confetti = () => {
   );
 };
 
-const placeColors: Record<number, { badge: string; glow: string; text: string }> = {
-  1: { badge: "from-amber-300 to-yellow-500", glow: "rgba(251,191,36,0.25)", text: "text-amber-300" },
-  2: { badge: "from-slate-300 to-slate-400", glow: "rgba(203,213,225,0.18)", text: "text-slate-300" },
-  3: { badge: "from-orange-400 to-amber-600", glow: "rgba(251,146,60,0.18)", text: "text-orange-400" },
-  4: { badge: "from-white/30 to-white/10", glow: "rgba(255,255,255,0.08)", text: "text-white/60" },
-  5: { badge: "from-white/30 to-white/10", glow: "rgba(255,255,255,0.08)", text: "text-white/60" },
-};
-
 const Index = () => {
   return (
     <div className="min-h-screen font-body" style={{ background: "#0a0a0f" }}>
@@ -168,57 +152,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Winners */}
+      {/* Content */}
       <div className="relative z-20 w-full max-w-2xl mx-auto px-6 pb-24 -mt-16">
-
-        <div className="rounded-3xl overflow-hidden border border-amber-400/20 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
-          <div className="px-6 py-4 border-b border-amber-400/20 flex items-center justify-center gap-2" style={{ background: "rgba(251,191,36,0.07)" }}>
-            <span className="text-lg">🏆</span>
-            <p className="text-amber-400 text-xs tracking-[0.2em] uppercase font-bold">Список победителей</p>
-          </div>
-
-          <div className="divide-y divide-white/6">
-            {winners.map((w) => {
-              const colors = placeColors[w.place];
-              return (
-                <div
-                  key={w.place}
-                  className="flex items-center gap-4 px-6 py-5"
-                  style={{ boxShadow: w.place <= 3 ? `inset 0 0 40px ${colors.glow}` : undefined }}
-                >
-                  <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${colors.badge} flex items-center justify-center shrink-0 font-heading font-black text-sm text-[#0a0a0f]`}>
-                    {w.place}
-                  </div>
-
-                  <span className="text-2xl">{w.icon}</span>
-
-                  <div className="flex-1 min-w-0">
-                    <p className="text-white font-semibold text-sm">{w.prize}</p>
-                    <p className="text-white/30 text-xs mt-0.5">Билет {w.ticket}</p>
-                  </div>
-
-                  <div className={`text-right shrink-0`}>
-                    {w.place === 1 && (
-                      <span className="inline-flex items-center gap-1 bg-amber-400/15 border border-amber-400/30 rounded-full px-2.5 py-0.5 text-amber-300 text-[10px] font-bold tracking-wide uppercase">
-                        Гран-при
-                      </span>
-                    )}
-                    {w.place === 2 && (
-                      <span className="inline-flex items-center gap-1 bg-slate-400/10 border border-slate-400/25 rounded-full px-2.5 py-0.5 text-slate-300 text-[10px] font-bold tracking-wide uppercase">
-                        2-е место
-                      </span>
-                    )}
-                    {w.place === 3 && (
-                      <span className="inline-flex items-center gap-1 bg-orange-400/10 border border-orange-400/25 rounded-full px-2.5 py-0.5 text-orange-400 text-[10px] font-bold tracking-wide uppercase">
-                        3-е место
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Contact notice */}
         <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
