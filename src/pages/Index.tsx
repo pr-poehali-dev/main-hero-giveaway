@@ -177,7 +177,7 @@ const Index = () => {
           <div className="rounded-2xl overflow-hidden border border-white/8" style={{ background: "rgba(255,255,255,0.03)" }}>
             <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
               <iframe
-                src="https://disk.yandex.ru/i/Hw5Z6R9Hi-t_tg/preview"
+                src="https://disk.360.yandex.ru/i/Hw5Z6R9Hi-t_tg/preview"
                 className="absolute inset-0 w-full h-full"
                 frameBorder="0"
                 allowFullScreen
