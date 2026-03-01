@@ -247,6 +247,32 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-20 w-full max-w-2xl mx-auto px-6 pb-24 -mt-16">
 
+        {/* Telegram Premium contest */}
+        <div className="rounded-2xl p-5 border border-amber-400/20 mb-8" style={{ background: "rgba(251,191,36,0.05)" }}>
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
+              <Icon name="Gift" size={18} className="text-amber-400" />
+            </div>
+            <div>
+              <p className="text-white font-semibold text-sm mb-1">Выиграй Telegram Premium!</p>
+              <p className="text-white/60 text-sm leading-relaxed">
+                Мы закончили розыгрыш и подвели итоги, но ты ещё можешь попробовать выиграть премиум в Telegram! Для этого опубликуй историю с фото с мероприятия, которую будет видно всем, и отправь свой ник нам по форме ниже. Мы подарим премиум случайным участникам.
+              </p>
+            </div>
+          </div>
+          <script src="https://forms.yandex.ru/_static/embed.js" async />
+          <div className="rounded-xl overflow-hidden">
+            <iframe
+              src="https://forms.yandex.ru/u/69a41f74eb614650cad99d44?iframe=1"
+              frameBorder="0"
+              name="ya-form-69a41f74eb614650cad99d44"
+              width="100%"
+              style={{ minHeight: 400, display: "block" }}
+              title="Форма участия в розыгрыше Telegram Premium"
+            />
+          </div>
+        </div>
+
         {/* Contact notice */}
         <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
           <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
@@ -280,32 +306,6 @@ const Index = () => {
 
         {/* Photo Gallery */}
         <PhotoGallery />
-
-        {/* Telegram Premium contest */}
-        <div className="rounded-2xl p-5 border border-amber-400/20 mb-8" style={{ background: "rgba(251,191,36,0.05)" }}>
-          <div className="flex items-start gap-4 mb-4">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
-              <Icon name="Gift" size={18} className="text-amber-400" />
-            </div>
-            <div>
-              <p className="text-white font-semibold text-sm mb-1">Выиграй Telegram Premium!</p>
-              <p className="text-white/60 text-sm leading-relaxed">
-                Мы закончили розыгрыш и подвели итоги, но ты ещё можешь попробовать выиграть премиум в Telegram! Для этого опубликуй историю с фото с мероприятия, которую будет видно всем, и отправь свой ник нам по форме ниже. Мы подарим премиум случайным участникам.
-              </p>
-            </div>
-          </div>
-          <script src="https://forms.yandex.ru/_static/embed.js" async />
-          <div className="rounded-xl overflow-hidden">
-            <iframe
-              src="https://forms.yandex.ru/u/69a41f74eb614650cad99d44?iframe=1"
-              frameBorder="0"
-              name="ya-form-69a41f74eb614650cad99d44"
-              width="100%"
-              style={{ minHeight: 400, display: "block" }}
-              title="Форма участия в розыгрыше Telegram Premium"
-            />
-          </div>
-        </div>
 
         {/* Photo download link */}
         <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
