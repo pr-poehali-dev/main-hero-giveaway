@@ -247,6 +247,17 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-20 w-full max-w-2xl mx-auto px-6 pb-24 -mt-16">
 
+        {/* Contact notice */}
+        <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
+            <Icon name="Phone" size={18} className="text-amber-400" />
+          </div>
+          <div>
+            <p className="text-white font-semibold text-sm mb-1">Как получить приз?</p>
+            <p className="text-white/50 text-sm leading-relaxed">Свяжитесь с AlAero Group. Призы вручаются лично при предъявлении выигрышного билета (конверта).</p>
+          </div>
+        </div>
+
         {/* Telegram Premium contest */}
         <div className="rounded-2xl p-5 border border-amber-400/20 mb-8" style={{ background: "#d4d4d4" }}>
           <div className="flex items-start gap-4 mb-4">
@@ -270,17 +281,6 @@ const Index = () => {
               style={{ minHeight: 120, display: "block" }}
               title="Форма участия в розыгрыше Telegram Premium"
             />
-          </div>
-        </div>
-
-        {/* Contact notice */}
-        <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
-            <Icon name="Phone" size={18} className="text-amber-400" />
-          </div>
-          <div>
-            <p className="text-white font-semibold text-sm mb-1">Как получить приз?</p>
-            <p className="text-white/50 text-sm leading-relaxed">Свяжитесь с AlAero Group. Призы вручаются лично при предъявлении выигрышного билета (конверта).</p>
           </div>
         </div>
 
