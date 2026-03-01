@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const CONFETTI_COLORS = [
@@ -115,6 +115,98 @@ const Confetti = () => {
   );
 };
 
+const PHOTOS = [
+  "https://cdn.poehali.dev/files/9f221518-55fe-4a6d-b49c-2185440828fb.jpg",
+  "https://cdn.poehali.dev/files/30fc5b20-89f9-4f79-9759-d2233c756b87.jpg",
+  "https://cdn.poehali.dev/files/91ea1fad-9c33-4e69-87b5-c246003f797f.jpg",
+  "https://cdn.poehali.dev/files/6888077b-d758-4c29-a728-9f814324d003.jpg",
+  "https://cdn.poehali.dev/files/028559f5-c543-4507-b34f-3306c34c3ccd.jpg",
+  "https://cdn.poehali.dev/files/b73235f4-9ddb-4d82-ae7e-6a19d929a9df.jpg",
+  "https://cdn.poehali.dev/files/93396f02-95a4-4d79-bff0-960eff6776ea.jpg",
+  "https://cdn.poehali.dev/files/2db818a0-d2b8-4d09-9612-668f39894ec9.jpg",
+  "https://cdn.poehali.dev/files/c6993d5d-05e8-4a2a-b334-f4ed7d32367d.jpg",
+  "https://cdn.poehali.dev/files/ce59f6dd-59dd-4a31-a42e-0c70e0fed0ef.jpg",
+  "https://cdn.poehali.dev/files/9136e4bb-4f4f-4d6e-800d-73c3fd465b1c.jpg",
+  "https://cdn.poehali.dev/files/4171a66e-6a8d-4eff-ab79-bd4ca5d2ea0b.jpg",
+  "https://cdn.poehali.dev/files/d689d8cd-ff31-42b8-976c-209abfbaf0e3.jpg",
+  "https://cdn.poehali.dev/files/3c2649de-df18-4dbe-a0d3-f6dd38a98d56.jpg",
+];
+
+const PhotoGallery = () => {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const prev = () => setLightbox((i) => (i! > 0 ? i! - 1 : PHOTOS.length - 1));
+  const next = () => setLightbox((i) => (i! < PHOTOS.length - 1 ? i! + 1 : 0));
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "Escape") setLightbox(null);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightbox]);
+
+  return (
+    <div className="mb-10">
+      <div className="flex items-center gap-2 mb-4">
+        <Icon name="Images" size={18} className="text-amber-400" />
+        <p className="text-white font-semibold text-sm">Фото с мероприятия</p>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        {PHOTOS.map((src, i) => (
+          <div
+            key={i}
+            className="rounded-xl overflow-hidden cursor-pointer aspect-[4/3] bg-white/5"
+            onClick={() => setLightbox(i)}
+          >
+            <img
+              src={src}
+              alt={`Фото ${i + 1}`}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        ))}
+      </div>
+
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-2"
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+          >
+            <Icon name="ChevronLeft" size={36} />
+          </button>
+          <img
+            src={PHOTOS[lightbox]}
+            alt={`Фото ${lightbox + 1}`}
+            className="max-h-[90vh] max-w-[90vw] object-contain rounded-xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-2"
+            onClick={(e) => { e.stopPropagation(); next(); }}
+          >
+            <Icon name="ChevronRight" size={36} />
+          </button>
+          <button
+            className="absolute top-4 right-4 text-white/70 hover:text-white"
+            onClick={() => setLightbox(null)}
+          >
+            <Icon name="X" size={24} />
+          </button>
+          <p className="absolute bottom-4 text-white/40 text-sm">{lightbox + 1} / {PHOTOS.length}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Index = () => {
   return (
     <div className="min-h-screen font-body" style={{ background: "#0a0a0f" }}>
@@ -189,19 +281,7 @@ const Index = () => {
         </div>
 
         {/* Photo Gallery */}
-        <div className="mb-10">
-          <div className="flex items-center gap-2 mb-4">
-            <Icon name="Images" size={18} className="text-amber-400" />
-            <p className="text-white font-semibold text-sm">Фото с мероприятия</p>
-          </div>
-          <div className="rounded-2xl p-6 border border-white/8 text-center" style={{ background: "rgba(255,255,255,0.03)" }}>
-            <div className="w-12 h-12 rounded-2xl mx-auto mb-3 flex items-center justify-center" style={{ background: "rgba(251,191,36,0.1)" }}>
-              <Icon name="ImagePlus" size={22} className="text-amber-400" />
-            </div>
-            <p className="text-white/50 text-sm">Фотографии с розыгрыша скоро появятся здесь</p>
-            <p className="text-white/25 text-xs mt-1">Следи за обновлениями!</p>
-          </div>
-        </div>
+        <PhotoGallery />
 
         {/* AlAero badge */}
         <div className="flex items-center justify-center gap-2 mb-8">
