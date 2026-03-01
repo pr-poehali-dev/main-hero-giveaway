@@ -254,8 +254,8 @@ const Index = () => {
               <Icon name="Gift" size={18} className="text-amber-400" />
             </div>
             <div>
-              <p className="text-white font-semibold text-sm mb-1">Выиграй Telegram Premium!</p>
-              <p className="text-white/60 text-sm leading-relaxed">
+              <p className="text-black font-semibold text-sm mb-1">Выиграй Telegram Premium!</p>
+              <p className="text-black/70 text-sm leading-relaxed">
                 Мы закончили розыгрыш и подвели итоги, но ты ещё можешь попробовать выиграть премиум в Telegram! Для этого опубликуй историю с фото с мероприятия, которую будет видно всем, и отправь свой ник нам по форме ниже. Мы подарим премиум случайным участникам.
               </p>
             </div>
