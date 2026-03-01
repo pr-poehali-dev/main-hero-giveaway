@@ -247,6 +247,27 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-20 w-full max-w-2xl mx-auto px-6 pb-24 -mt-16">
 
+        {/* Photo download link */}
+        <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
+            <Icon name="Download" size={18} className="text-amber-400" />
+          </div>
+          <div>
+            <p className="text-white font-semibold text-sm mb-1">Скачать фото на память</p>
+            <p className="text-white/50 text-sm leading-relaxed mb-2">
+              Найти себя на фото и скачать его на память вы можете по ссылке:
+            </p>
+            <a
+              href="https://disk.360.yandex.ru/d/l7E2Duc-fhbTTQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 text-sm hover:text-amber-300 underline underline-offset-2 transition-colors"
+            >
+              Открыть фотоархив →
+            </a>
+          </div>
+        </div>
+
         {/* Telegram Premium contest */}
         <div className="rounded-2xl p-5 border border-amber-400/20 mb-8" style={{ background: "#d4d4d4" }}>
           <div className="flex items-start gap-4 mb-4">
@@ -275,27 +296,6 @@ const Index = () => {
 
         {/* Photo Gallery */}
         <PhotoGallery />
-
-        {/* Photo download link */}
-        <div className="rounded-2xl p-5 border border-white/8 flex items-start gap-4 mb-8" style={{ background: "rgba(255,255,255,0.03)" }}>
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(251,191,36,0.1)" }}>
-            <Icon name="Download" size={18} className="text-amber-400" />
-          </div>
-          <div>
-            <p className="text-white font-semibold text-sm mb-1">Скачать фото на память</p>
-            <p className="text-white/50 text-sm leading-relaxed mb-2">
-              Найти себя на фото и скачать его на память вы можете по ссылке:
-            </p>
-            <a
-              href="https://disk.360.yandex.ru/d/l7E2Duc-fhbTTQ"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-amber-400 text-sm hover:text-amber-300 underline underline-offset-2 transition-colors"
-            >
-              Открыть фотоархив →
-            </a>
-          </div>
-        </div>
 
         {/* Video */}
         <div className="mb-8">
