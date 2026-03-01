@@ -267,7 +267,7 @@ const Index = () => {
               frameBorder="0"
               name="ya-form-69a41f74eb614650cad99d44"
               width="100%"
-              style={{ minHeight: 400, display: "block" }}
+              style={{ minHeight: 280, display: "block" }}
               title="Форма участия в розыгрыше Telegram Premium"
             />
           </div>
