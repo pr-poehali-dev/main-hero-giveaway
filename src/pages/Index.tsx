@@ -254,9 +254,7 @@ const Index = () => {
           </div>
           <div>
             <p className="text-white font-semibold text-sm mb-1">Как получить приз?</p>
-            <p className="text-white/50 text-sm leading-relaxed">
-              Свяжитесь с менеджером AlAero Group. Призы вручаются лично при предъявлении выигрышного билета.
-            </p>
+            <p className="text-white/50 text-sm leading-relaxed">Свяжитесь с AlAero Group. Призы вручаются лично при предъявлении выигрышного билета (конверта).</p>
           </div>
         </div>
 
