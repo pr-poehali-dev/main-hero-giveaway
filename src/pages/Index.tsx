@@ -273,26 +273,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Video */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
-            <Icon name="PlayCircle" size={18} className="text-amber-400" />
-            <p className="text-white font-semibold text-sm">Видео с мероприятия</p>
-          </div>
-          <div className="rounded-2xl overflow-hidden border border-white/8" style={{ background: "rgba(255,255,255,0.03)" }}>
-            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-              <iframe
-                src="https://rutube.ru/play/embed/private/292669b848aa6729be609e772fee5cd6/?p=SVPnPXOLU8-dKl5JVUeXaw"
-                className="absolute inset-0 w-full h-full"
-                frameBorder="0"
-                allowFullScreen
-                allow="autoplay; fullscreen; picture-in-picture"
-                title="Видео с мероприятия AlAero"
-              />
-            </div>
-          </div>
-        </div>
-
         {/* Photo Gallery */}
         <PhotoGallery />
 
@@ -314,6 +294,26 @@ const Index = () => {
             >
               Открыть фотоархив →
             </a>
+          </div>
+        </div>
+
+        {/* Video */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <Icon name="PlayCircle" size={18} className="text-amber-400" />
+            <p className="text-white font-semibold text-sm">Видео с мероприятия</p>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-white/8" style={{ background: "rgba(255,255,255,0.03)" }}>
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <iframe
+                src="https://rutube.ru/play/embed/private/292669b848aa6729be609e772fee5cd6/?p=SVPnPXOLU8-dKl5JVUeXaw"
+                className="absolute inset-0 w-full h-full"
+                frameBorder="0"
+                allowFullScreen
+                allow="autoplay; fullscreen; picture-in-picture"
+                title="Видео с мероприятия AlAero"
+              />
+            </div>
           </div>
         </div>
 
